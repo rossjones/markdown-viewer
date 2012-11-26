@@ -1,6 +1,10 @@
 require 'sinatra'
 require 'rdiscount'
 
+def render_md(params, forced=nil)
+  @mdown =  forced ? forced : (params[:content] ? params[:content] : params['file'][:tempfile].read)
+  return RDiscount.new(@mdown).to_html, @mdown
+end
 
 get '/' do
       @mdown = <<HERE
@@ -18,14 +22,12 @@ To send a file (with your Markdown in) use the following, replacing filename.txt
 
 > curl --form "file=@filename.txt" http://markdownviewer.herokuapp.com/render
 HERE
-
+  @result, _ = render_md params, @mdown
   erb :index
 end
 
 post '/' do
-  @mdown = params[:content] ? params[:content] : params['file'][:tempfile].read
-
-  @result = RDiscount.new(@mdown).to_html
+  @result,@mdown = render_md params
 
   if params[:encode]
     @encoded = true
