@@ -24,9 +24,17 @@ post '/' do
   end
 end
 
-# Handle the other pages by directly rendering the appropriate
-# template
+not_found do
+  erb :not_found
+end
+
+# Handle the other pages by directly rendering the appropriate template
+# Prone to failure
 get '/?:page?' do
-  erb params['page'].to_sym
+  begin
+    erb params['page'].to_sym
+  rescue Errno::ENOENT
+    raise Sinatra::NotFound
+  end
 end
 
