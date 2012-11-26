@@ -1,10 +1,6 @@
 require 'sinatra'
 require 'rdiscount'
 
-configure :productiondo
-    enable :logging
-end
-
 def render_md(params, forced=nil)
   @mdown =  forced ? forced : (params[:content] ? params[:content] : params['file'][:tempfile].read)
   return RDiscount.new(@mdown).to_html, @mdown
