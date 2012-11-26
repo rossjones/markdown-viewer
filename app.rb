@@ -24,10 +24,9 @@ post '/' do
   end
 end
 
-get '/about' do
-  erb :about
+# Handle the other pages by directly rendering the appropriate
+# template
+get '/?:page?' do
+  erb params['page'].to_sym
 end
 
-get '/contact' do
-  erb :contact
-end
