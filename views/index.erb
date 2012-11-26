@@ -1,23 +1,22 @@
 <div class="row">
 <div class="span6">
-    <form action="/" method="post">
-        <textarea name="content" rows="13" style="width:100%;"><%= @mdown %></textarea>
-        <div class="pull-right">
+    <form action="/" method="post" class="subhead_md"  style="margin-top:-20px;">
+        <textarea name="content" rows="13" style="width:100%;background-color:#efefef;"><%= @mdown %></textarea>
         <input type="hidden" name="site" value="main"/>
         <input type="submit" class="btn btn-primary" value="Give me HTML!" name="encode"></input>
                         &nbsp;&nbsp;
         <input type="submit" class="btn btn-primary" value="Show me HTML!"></button>
-        </div>
     </form>
 </div>
 <div class="span6">
-
+    <form class="subhead_html" style="margin-top:-20px;">
 <% if @encoded %>
-    <textarea rows="13" style="width:100%;"><%= @result %></textarea>
+    <textarea rows="13" style="width:100%;background-color:#efefef;"><%= @result %></textarea>
 <% else %>
-    <div style="height:265px; overflow: auto; border: solid 1px #ccc;">
+    <div style="height:265px; overflow: auto; border: solid 1px #ccc; background-color:#efefef;">
     <%= @result %>
     </div>
+    </form>
 <% end %>
 
 </div>

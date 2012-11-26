@@ -13,11 +13,8 @@ get '/' do
 end
 
 post '/' do
-  @result,@mdown = render_md params
-
-  if params[:encode]
-    @encoded = true
-  end
+  @result, @mdown = render_md params
+  @encoded = params[:encode]
 
   if params[:site]
     erb :index
@@ -25,6 +22,12 @@ post '/' do
     content_type 'text/plain', :charset => 'utf-8'
     @result
   end
-
 end
 
+get '/about' do
+  erb :about
+end
+
+get '/contact' do
+  erb :contact
+end

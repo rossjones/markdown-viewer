@@ -8,12 +8,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
     <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
+        background-image: url('/img/linedpaper.png');
+      }
+      .page-header h1 {
+          font-family: 'Permanent Marker', cursive;
       }
     </style>
     <link href="/css/bootstrap-responsive.css" rel="stylesheet">
@@ -40,9 +45,9 @@
           <a class="brand" href="/">Markdown viewer</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li class="<% if request.path_info == '/' %>active<% end %>"><a href="/">Home</a></li>
+              <li class="<% if request.path_info == '/about' %>active<% end %>"><a href="/about">About</a></li>
+              <li class="<% if request.path_info == '/contact' %>active<% end %>"><a href="/contact">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -51,7 +56,6 @@
 
     <div class="container">
 
-      <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="page-header">
           <h1>Markdown viewer <small>Send Markdown, get HTML back</small></h1>
       </div>
@@ -59,8 +63,7 @@
 
       <%= yield %>
 
-      <hr>
-
+      <br/><br/>
       <footer>
         <p>&copy; Servercode 2012</p>
       </footer>
