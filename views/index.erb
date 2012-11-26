@@ -1,6 +1,6 @@
 <div class="row">
 <div class="span6">
-    <form action="/render" method="post">
+    <form action="/" method="post">
         <textarea name="content" rows="13" style="width:100%;"><%= @mdown %></textarea>
         <div class="pull-right">
         <input type="hidden" name="site" value="main"/>
@@ -15,7 +15,9 @@
 <% if @encoded %>
     <textarea rows="13" style="width:100%;"><%= @result %></textarea>
 <% else %>
+    <div style="height:265px; overflow: auto; border: solid 1px #ccc;">
     <%= @result %>
+    </div>
 <% end %>
 
 </div>
