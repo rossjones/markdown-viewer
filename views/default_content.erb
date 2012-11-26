@@ -4,10 +4,10 @@ Paste your Markdown into this text area, and then click *Show me HTML!* to see w
 
 ## Using curl
 
-If you want to use curl to convert your Markdown you can POST to http://markdownviewer.herokuapp.com/render passing your Markdown in a variable called _content_.
+If you want to use curl to convert your Markdown you can POST to http://markdownviewer.herokuapp.com/ passing your Markdown in a variable called _content_.
 
-> curl --data "content=#This is a title" http://markdownviewer.herokuapp.com/render
+> curl --data "content=#This is a title" http://markdownviewer.herokuapp.com/
 
 To send a file (with your Markdown in) use the following, replacing filename.txt with the name of your file
 
-> curl --form "file=@filename.txt" http://markdownviewer.herokuapp.com/render
+> curl --form "file=@filename.txt" http://markdownviewer.herokuapp.com/
